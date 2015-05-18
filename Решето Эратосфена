@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	unsigned int i, n = { 0 };
+	cin >> n;
+	vector<unsigned int> list(n-1);
+	vector<unsigned int>::iterator _i = list.begin(), _j = list.begin() + 1;
+	for (i = 2; _i<list.end(); i++, _i++)
+	{
+		*_i = i;
+	}
+	for (_i = list.begin(); _i < list.end()-1; _i++)
+	{
+		for (_j = _i + 1; _j < list.end();)
+		{
+			if ((*_j) % (*_i) == 0)
+			{
+				_j=list.erase(_j);
+			}
+			else
+			{
+				_j++;
+			}
+		}
+	}
+	for (_i = list.begin(); _i < list.end(); _i++)
+	{
+		cout << *_i << " ";
+	}
+	system("pause");
+	return 0;
+}
